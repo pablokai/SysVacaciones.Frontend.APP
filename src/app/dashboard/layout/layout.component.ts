@@ -7,8 +7,6 @@ import { EmpleadosComponent } from '../../admin/pages/empleados/empleados.compon
 
 @Component({
   selector: 'app-layout',
-  standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, HomeComponent, EmpleadosComponent],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css'
 })
