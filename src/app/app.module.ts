@@ -5,12 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { LayoutComponent } from './dashboard/layout/layout.component';
 import { AdminModule} from './admin/admin.module';
-
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponent ],
   imports: [
-    CommonModule, AppRoutingModule, BrowserModule, AdminModule
+    CommonModule, AppRoutingModule, BrowserModule, AdminModule, HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
