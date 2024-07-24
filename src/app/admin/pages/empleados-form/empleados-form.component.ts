@@ -13,7 +13,7 @@ export class EmpleadosFormComponent {
   private id : any ;
   public titulo : string  = '';
   public btnTexto : string = '';
-  constructor(private router : Router, private route : ActivatedRoute){}
+  constructor(private router : Router, private route : ActivatedRoute){} //no se igualan properties
 
 
   ngOnInit(): void {
@@ -22,11 +22,11 @@ export class EmpleadosFormComponent {
 
     this.proceso = response['proceso'];
     
-    this.id = this.proceso === 1 ??  response['id'];
+    this.id = this.proceso == 1 ?  response['id'] : '' ;
 
     this.titulo = this.proceso===0 ? 'Registro de Empleados' : 'Edición de Empleados';
     this.btnTexto = this.proceso===0 ? 'Insertar' : 'Editar';
 
-    console.log(this.proceso, this.id)
+    console.log(this.proceso, this.id);
   }
 }

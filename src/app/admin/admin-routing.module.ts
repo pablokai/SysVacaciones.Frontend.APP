@@ -8,7 +8,7 @@ import {routes} from './admin.routes'
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes)//setea enrutamiento para modulos hijo, setea propio enrutamiento
   ], 
   exports:[
     RouterModule

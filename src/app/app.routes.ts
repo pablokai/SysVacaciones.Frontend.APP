@@ -9,7 +9,7 @@ export const routes: Routes = [
     {
         path: '',
         component: LayoutComponent,
-        loadChildren: () =>
+        loadChildren: () => //se usa lazy loading para cargar como hijo el admin module
             import('./admin/admin.module')
                 .then(module => module.AdminModule),
                 
