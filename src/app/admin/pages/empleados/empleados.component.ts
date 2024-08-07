@@ -14,46 +14,10 @@ export class EmpleadosComponent {
   constructor(private router : Router, private empleadosService : EmpleadosService){
 
   }
-  mockdata =  [
-    {
-      "cedula": "12345678",
-      "name": "John Doe",
-      "startDate": "2022-01-15",
-      "role": "Developer",
-      "state": "Activo"
-    },
-    {
-      "cedula": "87654321",
-      "name": "Jane Smith",
-      "startDate": "2021-06-01",
-      "role": "Project Manager",
-      "state": "Activo"
-    },
-    {
-      "cedula": "23456789",
-      "name": "Alice Johnson",
-      "startDate": "2023-03-20",
-      "role": "Designer",
-      "state": "Inactivo"
-    },
-    {
-      "cedula": "98765432",
-      "name": "Bob Brown",
-      "startDate": "2019-11-30",
-      "role": "QA Engineer",
-      "state": "Activo"
-    },
-    {
-      "cedula": "34567890",
-      "name": "Charlie Davis",
-      "startDate": "2020-08-10",
-      "role": "Scrum Master",
-      "state": "Inactivo"
-    }
-  ];
+
   ngOnInit(): void {
 
-     
+     this.loadEmpleados();
   }
 
   loadEmpleados () : void {
@@ -61,6 +25,8 @@ export class EmpleadosComponent {
     this.empleadosService.listarEmpleados().subscribe( (response) =>{ 
       this.listaEmpleados = response;
     });
+
+    console.log(this.listaEmpleados);
   }
 
   redirectEmpleadosFormInsert () : void{
@@ -72,11 +38,11 @@ export class EmpleadosComponent {
       })
   }
 
-  redirectEmpleadosFormEdit (idEmpleado : string) : void{
+  redirectEmpleadosFormEdit (empleado : Empleados) : void{
     this.router.navigate(['/empleados-insertar'],{
       state: {
         proceso: 1,
-        id: idEmpleado
+        empleado: empleado
       }
     })
   }
