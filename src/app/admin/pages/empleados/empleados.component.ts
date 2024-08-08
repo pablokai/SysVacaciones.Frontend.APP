@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router'
+import { EmpleadosService } from '../../../services/empleados.service';
+import { Empleados } from '../../../interfaces/empleados';
 
 @Component({
   selector: 'app-empleados',
@@ -8,7 +10,24 @@ import {Router} from '@angular/router'
 })
 export class EmpleadosComponent {
 
-  constructor(private router : Router){}
+  listaEmpleados : Empleados[] = [];
+  constructor(private router : Router, private empleadosService : EmpleadosService){
+
+  }
+
+  ngOnInit(): void {
+
+     this.loadEmpleados();
+  }
+
+  loadEmpleados () : void {
+    //el observable nos da subscribe para consumir el metodo, recibe response  y lo mapea a nuestro objeto, es similar al promises de js
+    this.empleadosService.listarEmpleados().subscribe( (response) =>{ 
+      this.listaEmpleados = response;
+    });
+
+    console.log(this.listaEmpleados);
+  }
 
   redirectEmpleadosFormInsert () : void{
     this.router.navigate(['/empleados-insertar'], 
@@ -19,12 +38,17 @@ export class EmpleadosComponent {
       })
   }
 
-  redirectEmpleadosFormEdit () : void{
+  redirectEmpleadosFormEdit (empleado : Empleados) : void{
     this.router.navigate(['/empleados-insertar'],{
       state: {
         proceso: 1,
-        id: 1
+        empleado: empleado
       }
     })
   }
+
+  deleteEmpleados(id : string) : void{
+    alert('voy a borrar ' + id);
+  }
+
 }
