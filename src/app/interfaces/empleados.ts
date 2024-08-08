@@ -10,8 +10,8 @@ export interface Empleados {
     fechaNacimiento : Date;
     correoElectronico : string;
     fechaIngreso : Date;
-    idPuesto : number;
     puesto : string;
     salario : number;
+    estado : string;
 
 }
