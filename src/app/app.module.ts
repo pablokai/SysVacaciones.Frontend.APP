@@ -1,17 +1,26 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { LayoutComponent } from './dashboard/layout/layout.component';
-import { AdminModule} from './admin/admin.module';
+import { FormsModule } from '@angular/forms';
 
+
+import { AppComponent } from './app.component';
+import { VacacionesComponent } from './admin/pages/vacaciones/vacaciones.component';
+import { VacacionesFormComponent } from './admin/pages/vacaciones-from/vacaciones-from.component';
 
 @NgModule({
-  declarations: [AppComponent, LayoutComponent ],
-  imports: [
-    CommonModule, AppRoutingModule, BrowserModule, AdminModule
+  declarations: [
+    AppComponent,
+    VacacionesComponent,
+    VacacionesFormComponent
   ],
+  imports: [
+    BrowserModule,
+    FormsModule
+  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule{}
+export class AppModule { }
+
+
+

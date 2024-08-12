@@ -1,0 +1,27 @@
+<div class="vacaciones-container">
+    <h1 class="text-2xl font-bold mb-4">Solicitud de Vacaciones</h1>
+  
+    <div class="mb-4">
+      <label for="cedula" class="block text-sm font-medium text-gray-700">Ingresar usuario (Cédula)</label>
+      <input id="cedula" [(ngModel)]="cedula" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ingrese cédula del empleado" />
+    </div>
+    <div class="mb-4">
+      <button (click)="buscarEmpleado()" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Buscar</button>
+    </div>
+  
+    <div *ngIf="empleado" class="mb-4">
+      <p>Nombre: {{ empleado.nombre }}</p>
+      <p>Días de vacaciones disponibles: {{ empleado.diasDisponibles }}</p>
+    </div>
+  
+    <div *ngIf="empleado" class="mb-4">
+      <label for="dias" class="block text-sm font-medium text-gray-700">Ingrese la cantidad de días a solicitar</label>
+      <input id="dias" [(ngModel)]="diasSolicitados" type="number" min="1" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" />
+      <button (click)="solicitarVacaciones()" class="mt-2 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">Solicitar</button>
+    </div>
+  
+    <div *ngIf="mensaje" class="mt-4">
+      <p>{{ mensaje }}</p>
+    </div>
+  </div>
+  
