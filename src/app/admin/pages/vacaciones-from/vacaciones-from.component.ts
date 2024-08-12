@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./vacaciones-from.component.css']
 })
 
-export class VacacionesFormComponent implements OnInit {
+export class VacacionesComponent implements OnInit {
   cedula: string = '';
   empleado: any = null;
   diasSolicitados: number = 0;

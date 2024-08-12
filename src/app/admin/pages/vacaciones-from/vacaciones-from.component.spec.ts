@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VacacionesFormComponent } from './vacaciones-from.component';
+import { VacacionesComponent } from './vacaciones-from.component';
 
 describe('VacacionesFromComponent', () => {
-  let component: VacacionesFormComponent;
-  let fixture: ComponentFixture<VacacionesFormComponent>;
+  let component: VacacionesComponent;
+  let fixture: ComponentFixture<VacacionesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VacacionesFormComponent]
+      imports: [VacacionesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(VacacionesFormComponent);
+    fixture = TestBed.createComponent(VacacionesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
