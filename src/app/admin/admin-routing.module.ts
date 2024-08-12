@@ -28,7 +28,18 @@ const routes: Routes = [
 ];
 
 @NgModule({
+<<<<<<< HEAD
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
+=======
+  declarations: [],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)//setea enrutamiento para modulos hijo, setea propio enrutamiento
+  ], 
+  exports:[
+    RouterModule
+  ]
+>>>>>>> f9a06a4d05378bb6b8ef0a775c37e9635484372d
 })
 export class AdminRoutingModule { }

@@ -8,7 +8,7 @@ import { RouterModule, PreloadAllModules } from '@angular/router';
   declarations: [],
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
+    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})//setea root module desde raiz de app
   ],
   exports: [RouterModule]
 })
