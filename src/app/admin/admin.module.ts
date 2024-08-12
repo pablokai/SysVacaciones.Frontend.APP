@@ -5,19 +5,21 @@ import { EmpleadosFormComponent } from './pages/empleados-form/empleados-form.co
 import { AdminRoutingModule } from './admin-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { SharedModule } from '../shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeEs from '@angular/common/locales/es-AR'
+import { SolicitudVacacionesComponent } from './pages/solicitud-vacaciones/solicitud-vacaciones.component';
+import { FilterPipe } from '../shared/pipes/filter.pipe';
 
 registerLocaleData(localeEs);
 @NgModule({
-  declarations: [EmpleadosComponent, HomeComponent, EmpleadosFormComponent],
+  declarations: [EmpleadosComponent, HomeComponent, EmpleadosFormComponent, SolicitudVacacionesComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    FormsModule
+    ],
   providers : [ {provide: LOCALE_ID, useValue: 'es-AR'}]
 })
 export class AdminModule{ }

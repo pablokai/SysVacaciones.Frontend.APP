@@ -10,6 +10,7 @@ import { Empleados } from '../../../interfaces/empleados';
 })
 export class EmpleadosComponent {
 
+  public filtro : string = '';
   listaEmpleados : Empleados[] = [];
   constructor(private router : Router, private empleadosService : EmpleadosService){
 
@@ -47,8 +48,12 @@ export class EmpleadosComponent {
     })
   }
 
-  deleteEmpleados(id : string) : void{
-    alert('voy a borrar ' + id);
+  deleteEmpleados(id : number) : void{
+    var empleado : any = {
+      id : id,
+    }
+
+    this.empleadosService.inactivarEmpleados(empleado).subscribe();
   }
 
 }

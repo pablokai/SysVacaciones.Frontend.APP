@@ -5,6 +5,7 @@ import { EmpleadosService } from '../../../services/empleados.service';
 import { Empleados } from '../../../interfaces/empleados';
 import { formatDate } from '@angular/common';
 import { Puestos } from '../../../interfaces/puestos';
+import { Respuesta } from '../../../interfaces/respuesta';
 
 
 @Component({
@@ -13,6 +14,11 @@ import { Puestos } from '../../../interfaces/puestos';
   styleUrl: './empleados-form.component.css'
 })
 export class EmpleadosFormComponent {
+
+  public modalSwitch : boolean = false;
+  public estadoModal : boolean = false;
+  public mensaje :string = '';
+  public volver : boolean = false;
 
   public proceso : any ;
   public empleado : Empleados= {
@@ -30,6 +36,10 @@ export class EmpleadosFormComponent {
     puesto : '',
     salario : 0,
     estado : ''
+  };
+  public respuesta : Respuesta = {
+    resultado :'',
+    estado: 0
   };
   public titulo : string  = '';
   public btnTexto : string = '';
@@ -58,7 +68,6 @@ export class EmpleadosFormComponent {
     this.titulo = this.proceso===0 ? 'Registro de Empleados' : 'Edición de Empleados';
     this.btnTexto = this.proceso===0 ? 'Insertar' : 'Editar';
     this.loadPuestos();
-    console.log(this.empleado)
     if(this.proceso === 0){
       this.formGroup = this.formBuilder.group({
         cedula: ['', Validators.required],
@@ -96,6 +105,10 @@ export class EmpleadosFormComponent {
 
   }
 
+  handleModalSwitch(childData : boolean)  {
+    this.modalSwitch = childData;
+  }
+
   loadPuestos () : void {
     this.empleadosService.listarPuestos().subscribe( (response) =>{ 
       this.listaPuestos = response;
@@ -119,9 +132,24 @@ export class EmpleadosFormComponent {
       salario : dataForm.salario,
       estado : dataForm.estado
     }
-    console.log(empleado)
-    this.empleadosService.editarEmpleados(empleado).subscribe();
+
+    this.empleadosService.editarEmpleados(empleado).subscribe((response) =>{
+      
+      this.respuesta = response;
+      if(this.respuesta.estado ==0){
+        this.modalSwitch = true;
+        this.estadoModal = false;
+        this.mensaje = this.respuesta.resultado;
+      }else{
+        this.modalSwitch = true;
+        this.estadoModal = true;
+        this.mensaje = this.respuesta.resultado;
+        
+      }
+    } );
+
   }
+
 
   onCreate(dataForm : any) : void {
     
@@ -139,15 +167,29 @@ export class EmpleadosFormComponent {
       fechaIngreso : dataForm.fechaIngreso,
       puesto : dataForm.puesto,
       salario : dataForm.salario,
-      estado : dataForm.estado
+      estado : 'Activo'
     }
 
-    this.empleadosService.insertarEmpleados(empleado).subscribe();
+    this.empleadosService.insertarEmpleados(empleado).subscribe( (response) =>{
+      this.respuesta = response;
+      if(this.respuesta.estado ==0){
+        this.modalSwitch = true;
+        this.estadoModal = false;
+        this.mensaje = this.respuesta.resultado;
+      }else{
+        this.modalSwitch = true;
+        this.estadoModal = true;
+        this.mensaje = this.respuesta.resultado;
+        
+      }
+    });
 
+     
   }
 
+
+
   onSubmit() : void{
-    console.log(this.proceso)
 
     if(this.formGroup?.valid){
       if(this.proceso === 0 ){
@@ -155,6 +197,10 @@ export class EmpleadosFormComponent {
       }else{
         this.onEdit(this.formGroup.value)
       }
+    }else{
+      this.modalSwitch = true;
+      this.estadoModal = false;
+      this.mensaje = 'Faltan campos obligatorios';
     }
   }
 

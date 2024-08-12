@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-modal',
@@ -7,16 +7,21 @@ import { Component } from '@angular/core';
 })
 export class ModalComponent {
   
-  public modalSwitch: boolean = false;
-  public mensaje : string = 'dsddddddds';
-  public textoBoton : string = 'dsd';
-  public estado : boolean = true;
+   @Input() modalSwitch = false; //decorator de entrada, recibe datos del parent
+   @Input() mensaje : string = '';
+   @Input() estado : boolean = true;
+   @Output() outputModalSwitch = new EventEmitter<boolean>;
+
+  public textoBoton : string = 'Cerrar';
+  public color : string = '';
+
+
 
   openModal(){
     this.modalSwitch = true;
   }
 
   closeModal(){
-    this.modalSwitch = false;
+    this.outputModalSwitch.emit(false);
   }
 }

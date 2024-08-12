@@ -12,6 +12,6 @@ export interface Empleados {
     fechaIngreso : Date;
     puesto : string;
     salario : number;
-    estado : string;
+    estado? : string;
 
 }
