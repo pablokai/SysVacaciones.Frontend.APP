@@ -11,6 +11,7 @@ export class ModalComponent {
    @Input() mensaje : string = '';
    @Input() estado : boolean = true;
    @Output() outputModalSwitch = new EventEmitter<boolean>;
+  //  @Input() redirectUrl : string = '';
 
   public textoBoton : string = 'Cerrar';
   public color : string = '';

@@ -18,7 +18,6 @@ export class EmpleadosFormComponent {
   public modalSwitch : boolean = false;
   public estadoModal : boolean = false;
   public mensaje :string = '';
-  public volver : boolean = false;
 
   public proceso : any ;
   public empleado : Empleados= {
@@ -107,6 +106,12 @@ export class EmpleadosFormComponent {
 
   handleModalSwitch(childData : boolean)  {
     this.modalSwitch = childData;
+
+    if(this.modalSwitch == false && this.estadoModal == true){
+      this.router.navigate(
+        ['/empleados']
+      );
+    }
   }
 
   loadPuestos () : void {

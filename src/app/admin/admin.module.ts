@@ -9,10 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import localeEs from '@angular/common/locales/es-AR'
 import { SolicitudVacacionesComponent } from './pages/solicitud-vacaciones/solicitud-vacaciones.component';
 import { FilterPipe } from '../shared/pipes/filter.pipe';
+import { ConsultaVacacionesComponent } from './pages/consulta-vacaciones/consulta-vacaciones.component';
 
 registerLocaleData(localeEs);
 @NgModule({
-  declarations: [EmpleadosComponent, HomeComponent, EmpleadosFormComponent, SolicitudVacacionesComponent],
+  declarations: [EmpleadosComponent, HomeComponent, EmpleadosFormComponent, SolicitudVacacionesComponent, ConsultaVacacionesComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

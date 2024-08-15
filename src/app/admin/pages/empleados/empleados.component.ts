@@ -53,7 +53,25 @@ export class EmpleadosComponent {
       id : id,
     }
 
-    this.empleadosService.inactivarEmpleados(empleado).subscribe();
+    this.empleadosService.inactivarEmpleados(empleado).subscribe((response)=>{
+      // if( this.empleado != null){       
+        
+      //   if(this.empleado.diasDisponibles > 0 ){
+      //     this.mostrarDetalle =  true;
+      //   }else{
+      //     this.modalSwitch = true;
+      //     this.estado = false;
+      //     this.mensaje = 'No cuenta con días disponibles'
+      //     this.mostrarDetalle = false;
+      //   }
+      // }else{
+      //   this.modalSwitch = true;
+      //   this.estado = false;
+      //   this.mensaje = 'No se encontraron datos de ese empleado'
+      //   this.mostrarDetalle = false;
+      // }
+    });
   }
+  
 
 }
