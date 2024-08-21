@@ -13,5 +13,7 @@ export interface Empleados {
     puesto : string;
     salario : number;
     estado? : string;
+    diasDisponibles? : number;
+
 
 }

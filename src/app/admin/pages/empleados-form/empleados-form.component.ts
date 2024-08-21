@@ -34,7 +34,9 @@ export class EmpleadosFormComponent {
     fechaIngreso : new Date,
     puesto : '',
     salario : 0,
-    estado : ''
+    estado : '',
+    diasDisponibles: 0
+
   };
   public respuesta : Respuesta = {
     resultado :'',
@@ -63,6 +65,7 @@ export class EmpleadosFormComponent {
 
     this.proceso = response['proceso'];  
     this.empleado = this.proceso == 1 ?  response['empleado'] : '' ;
+    console.log(this.empleado);
 
     this.titulo = this.proceso===0 ? 'Registro de Empleados' : 'Edición de Empleados';
     this.btnTexto = this.proceso===0 ? 'Insertar' : 'Editar';
@@ -82,6 +85,7 @@ export class EmpleadosFormComponent {
         segundoNombre: [''],
         telefono: ['', Validators.required],
         estado: [{value : 'Activo', disabled:true }, Validators.required,],
+        diasDisponibles: ['',Validators.required]
       });
     }else{
       this.formGroup = this.formBuilder.group({
@@ -98,7 +102,8 @@ export class EmpleadosFormComponent {
         salario: [this.empleado.salario],
         segundoApellido: [this.empleado.segundoApellido],
         segundoNombre: [this.empleado.segundoNombre],
-        telefono: [this.empleado.telefono, Validators.required]
+        telefono: [this.empleado.telefono, Validators.required],
+        diasDisponibles:[this.empleado.diasDisponibles, Validators.required]
       })
     }
 
@@ -135,7 +140,8 @@ export class EmpleadosFormComponent {
       fechaIngreso : this.empleado.fechaIngreso,
       puesto : dataForm.puesto,
       salario : dataForm.salario,
-      estado : dataForm.estado
+      estado : dataForm.estado,
+      diasDisponibles : dataForm.diasDisponibles
     }
 
     this.empleadosService.editarEmpleados(empleado).subscribe((response) =>{
@@ -172,7 +178,8 @@ export class EmpleadosFormComponent {
       fechaIngreso : dataForm.fechaIngreso,
       puesto : dataForm.puesto,
       salario : dataForm.salario,
-      estado : 'Activo'
+      estado : 'Activo',
+      diasDisponibles : dataForm.diasDisponibles
     }
 
     this.empleadosService.insertarEmpleados(empleado).subscribe( (response) =>{

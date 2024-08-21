@@ -61,6 +61,11 @@
                     <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Salario</label>
                     <input type="number" name="price" id="salario" formControlName="salario" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ingrese el salario" >
                 </div>
+
+                <div class="w-full">
+                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Dias</label>
+                    <input type="number" name="price" id="diasDisponibles" formControlName="diasDisponibles" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Ingrese cantidad de dias" >
+                </div>
                 <div>
                     <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado</label>
                     <select *ngIf="proceso === 0; else estado" id="category" id="estado" formControlName="estado"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
@@ -68,7 +73,7 @@
                     </select>
                     <ng-template #estado>
                         <select  id="category" id="estado" formControlName="estado"  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" >
-                            < <option >Activo</option>     
+                             <option >Activo</option>     
                             <option >Inactivo</option>      
                         </select>
                     </ng-template>
