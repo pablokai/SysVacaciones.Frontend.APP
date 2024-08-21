@@ -216,4 +216,8 @@ export class EmpleadosFormComponent {
     }
   }
 
+  onGoBack() : void{
+    this.router.navigate(['/empleados']);
+  }
+
 }
